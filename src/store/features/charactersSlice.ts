@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Character } from "../../utils/types";
 import axios from "axios";
+
 const API_URL = "https://rickandmortyapi.com/api/character";
 
 interface CharactersState {
@@ -11,6 +12,7 @@ interface CharactersState {
   loading: boolean;
   error: string | null;
   filters: {
+    name: string;
     species: string[];
     gender: string[];
     status: string[];
@@ -25,6 +27,7 @@ const initialState: CharactersState = {
   loading: false,
   error: null,
   filters: {
+    name: "",
     species: [],
     gender: [],
     status: [],
@@ -53,17 +56,31 @@ const applyFilters = (
   filters: CharactersState["filters"]
 ) => {
   let result = [...characters];
-  const { species, gender, status, order } = filters;
+  const { name, species, gender, status, order } = filters;
 
-  if (species.length)
+  if (name) {
+    result = result.filter((c) =>
+      c.name.toLowerCase().includes(name.toLowerCase())
+    );
+  }
+
+  if (species.length) {
     result = result.filter((c) => species.includes(c.species.toLowerCase()));
-  if (gender.length)
-    result = result.filter((c) => gender.includes(c.gender.toLowerCase()));
-  if (status.length)
-    result = result.filter((c) => status.includes(c.status.toLowerCase()));
+  }
 
-  if (order === "asc") result.sort((a, b) => a.name.localeCompare(b.name));
-  if (order === "desc") result.sort((a, b) => b.name.localeCompare(a.name));
+  if (gender.length) {
+    result = result.filter((c) => gender.includes(c.gender.toLowerCase()));
+  }
+
+  if (status.length) {
+    result = result.filter((c) => status.includes(c.status.toLowerCase()));
+  }
+
+  if (order === "asc") {
+    result.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (order === "desc") {
+    result.sort((a, b) => b.name.localeCompare(a.name));
+  }
 
   return result;
 };
@@ -79,6 +96,10 @@ const charactersSlice = createSlice({
     resetFilters(state) {
       state.filters = initialState.filters;
       state.filtered = state.all;
+    },
+    setNameFilter(state, action: PayloadAction<string>) {
+      state.filters.name = action.payload;
+      state.filtered = applyFilters(state.all, state.filters);
     },
   },
   extraReducers: (builder) => {
@@ -102,5 +123,6 @@ const charactersSlice = createSlice({
   },
 });
 
-export const { setFilters, resetFilters } = charactersSlice.actions;
+export const { setFilters, resetFilters, setNameFilter } =
+  charactersSlice.actions;
 export default charactersSlice.reducer;
