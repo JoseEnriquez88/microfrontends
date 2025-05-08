@@ -9,6 +9,7 @@ interface Character {
   species: string;
   gender: string;
   status: string;
+  image: string;
   [key: string]: unknown;
 }
 
