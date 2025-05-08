@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
+import { lazy } from "react";
 
-import Hero from "./views/Hero/Hero";
+const Hero = lazy(() => import("./views/Hero/Hero"));
+
 function App() {
   return (
     <Routes>
