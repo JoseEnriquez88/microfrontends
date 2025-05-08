@@ -6,9 +6,16 @@ const API_URL = "https://rickandmortyapi.com/api/character";
 interface Character {
   id: number;
   name: string;
+  image: string;
   species: string;
   gender: string;
   status: string;
+  origin: {
+    name: string;
+  };
+  location: {
+    name: string;
+  };
   [key: string]: unknown;
 }
 
