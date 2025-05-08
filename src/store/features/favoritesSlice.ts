@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-
-interface Character {
-  id: number;
-  name: string;
-  [key: string]: unknown;
-}
+import type { Character } from "../../utils/types";
 
 interface FavoritesState {
   list: Character[];

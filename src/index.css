@@ -7,6 +7,8 @@
 }
 
 @theme {
+  --color-rm-white: #fafafa;
+
   --color-rm-primary-100: #e7f3d8;
   --color-rm-primary-300: #b6da8b;
   --color-rm-primary-500: #8bc547;

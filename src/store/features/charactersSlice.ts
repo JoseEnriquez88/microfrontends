@@ -1,16 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import type { Character } from "../../utils/types";
 import axios from "axios";
 const API_URL = "https://rickandmortyapi.com/api/character";
-
-interface Character {
-  id: number;
-  name: string;
-  species: string;
-  gender: string;
-  status: string;
-  [key: string]: unknown;
-}
 
 interface CharactersState {
   all: Character[];
@@ -51,7 +43,7 @@ export const fetchCharacters = createAsyncThunk(
 export const fetchCharacterById = createAsyncThunk(
   "characters/fetchById",
   async (id: number) => {
-    const res = await axios.get(`API_URL${id}`);
+    const res = await axios.get(`${API_URL}/${id}`);
     return res.data;
   }
 );
