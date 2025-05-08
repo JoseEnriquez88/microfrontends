@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+// bg-[url('/assets/images/hero.png')]
 const Hero = () => {
   return (
-    <div className="relative h-screen w-screen bg-[url('/assets/images/hero.png')] bg-cover bg-center pt-62 b-12 px-50 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black/50 before:z-0 flex flex-col items-center gap-10">
+    <div className="relative h-screen w-screen  bg-[url('/assets/images/hero.png')] bg-cover bg-center b-12 px-50 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black/50 before:z-0 flex flex-col items-center justify-center pb-20 gap-10">
       <img
         src="/assets/images/logo.png"
         alt="logo"
-        className="relative object-cover md:w-[500px] lg:h-[175.79px]"
+        className="relative md:w-[508px]"
       />
       <h1 className="relative font-bold text-rm-neutral-50 lg:text-5xl leading-none tracking-normal">
         Bienvenido a Rick and morty
