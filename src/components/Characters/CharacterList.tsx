@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCharacters } from "../../store/features/charactersSlice";
 import type { RootState, AppDispatch } from "../../store/store";
 import CharacterCard from "./CharacterCard";
+
 const CharacterList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { filtered, loading, error } = useSelector(
@@ -22,7 +23,7 @@ const CharacterList = () => {
     );
 
   return (
-    <div className="grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 px-[200px]">
+    <div className="bg-gray-900 flex flex-wrap justify-center gap-6 px-[200px]">
       {filtered.map((character) => (
         <CharacterCard key={character.id} character={character} />
       ))}
