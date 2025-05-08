@@ -1,6 +1,7 @@
 import aliveIcon from "/assets/svg/ic-tick-circle.svg";
 import deadIcon from "/assets/svg/ic-close-circle.svg";
 import type { Character } from "../../utils/types";
+import FavoriteButton from "./FavoriteButton";
 
 interface CharacterCardProps {
   character: Character;
@@ -15,13 +16,14 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
       : undefined;
 
   return (
-    <div className="bg-rm-neutral-50 rounded-xl w-[508px] h-[137px] flex">
+    <div className="bg-rm-white rounded-xl w-[508px] h-[137px] flex relative">
       <img
         src={character.image}
         alt={character.name}
         loading="lazy"
         className="object-cover w-[137px] h-[137px] rounded-l-xl"
       />
+      <FavoriteButton character={character} />
       <div className="flex flex-col font-rm-mont w-full rounded-r-xl md:w-[371px] md:h-[137px] md:pt-[12px] md:pr-[8px] md:pb-[16px] md:pl-[16px]">
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-lg leading-8 tracking-normal">

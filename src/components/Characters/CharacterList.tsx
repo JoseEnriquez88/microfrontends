@@ -23,7 +23,7 @@ const CharacterList = () => {
     );
 
   return (
-    <div className="bg-gray-900 flex flex-wrap justify-center gap-6 px-[200px]">
+    <div className="flex flex-wrap justify-center gap-6 md:w-[1040px] h-screen">
       {filtered.map((character) => (
         <CharacterCard key={character.id} character={character} />
       ))}
