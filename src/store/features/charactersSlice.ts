@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Character } from "../../utils/types";
+import type { RootState } from "../store";
 import axios from "axios";
 
 const API_URL = "https://rickandmortyapi.com/api/character";
@@ -18,6 +19,9 @@ interface CharactersState {
     status: string[];
     order: "asc" | "desc" | null;
   };
+  currentPage: number;
+  itemsPerPage: number;
+  viewMode: "all" | "favorites";
 }
 
 const initialState: CharactersState = {
@@ -33,13 +37,29 @@ const initialState: CharactersState = {
     status: [],
     order: null,
   },
+  currentPage: 1,
+  itemsPerPage: 20,
+  viewMode: "all",
 };
 
 export const fetchCharacters = createAsyncThunk(
   "characters/fetchAll",
   async () => {
-    const res = await axios.get(API_URL);
-    return res.data.results;
+    const firstPage = await axios.get(API_URL);
+    const totalPages = firstPage.data.info.pages;
+    const allCharacters = [...firstPage.data.results];
+
+    const requests = [];
+    for (let i = 2; i <= totalPages; i++) {
+      requests.push(axios.get(`${API_URL}?page=${i}`));
+    }
+
+    const responses = await Promise.all(requests);
+    responses.forEach((res) => {
+      allCharacters.push(...res.data.results);
+    });
+
+    return allCharacters;
   }
 );
 
@@ -92,14 +112,23 @@ const charactersSlice = createSlice({
     setFilters(state, action: PayloadAction<CharactersState["filters"]>) {
       state.filters = action.payload;
       state.filtered = applyFilters(state.all, state.filters);
+      state.currentPage = 1;
     },
     resetFilters(state) {
       state.filters = initialState.filters;
       state.filtered = state.all;
+      state.currentPage = 1;
     },
     setNameFilter(state, action: PayloadAction<string>) {
       state.filters.name = action.payload;
       state.filtered = applyFilters(state.all, state.filters);
+      state.currentPage = 1;
+    },
+    setCurrentPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+    },
+    setViewMode(state, action: PayloadAction<"all" | "favorites">) {
+      state.viewMode = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -123,6 +152,19 @@ const charactersSlice = createSlice({
   },
 });
 
-export const { setFilters, resetFilters, setNameFilter } =
-  charactersSlice.actions;
+export const {
+  setFilters,
+  resetFilters,
+  setNameFilter,
+  setCurrentPage,
+  setViewMode,
+} = charactersSlice.actions;
+
+export const selectPaginatedCharacters = (state: RootState) => {
+  const { currentPage, itemsPerPage, filtered } = state.characters;
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return filtered.slice(start, end);
+};
+
 export default charactersSlice.reducer;
