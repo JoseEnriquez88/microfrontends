@@ -27,7 +27,9 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
       <div className="flex flex-col font-rm-mont w-full rounded-r-xl md:w-[371px] md:h-[137px] md:pt-[12px] md:pr-[8px] md:pb-[16px] md:pl-[16px]">
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-lg leading-8 tracking-normal">
-            {character.name}
+            {character.name.length > 20
+              ? `${character.name.slice(0, 20)}...`
+              : character.name}
           </h3>
           <button
             type="button"

@@ -11,6 +11,7 @@
 
   --color-rm-primary-100: #e7f3d8;
   --color-rm-primary-300: #b6da8b;
+  --color-rm-primary-400: #808c73;
   --color-rm-primary-500: #8bc547;
   --color-rm-primary-700: #588028;
   --color-rm-primary-900: #354e18;
@@ -21,6 +22,7 @@
   --color-rm-neutral-400: #808c73;
   --color-rm-neutral-600: #575b52;
   --color-rm-neutral-800: #333630;
+  --color-rm-neutral-900: #2e333d;
 
   /* --color-rm-error-100: */
   /* --color-rm-error-700: */
