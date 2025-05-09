@@ -11,4 +11,5 @@ export interface Character {
   location: {
     name: string;
   };
+  episode: string[];
 }

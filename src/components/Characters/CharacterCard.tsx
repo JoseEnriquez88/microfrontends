@@ -1,13 +1,15 @@
-import aliveIcon from "/assets/svg/ic-tick-circle.svg";
-import deadIcon from "/assets/svg/ic-close-circle.svg";
+import { Link, useLocation } from "react-router-dom";
 import type { Character } from "../../utils/types";
 import FavoriteButton from "./FavoriteButton";
+import aliveIcon from "/assets/svg/ic-tick-circle.svg";
+import deadIcon from "/assets/svg/ic-close-circle.svg";
 
 interface CharacterCardProps {
   character: Character;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
+  const location = useLocation();
   const statusIcon =
     character.status === "Alive"
       ? aliveIcon
@@ -26,11 +28,16 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
       <FavoriteButton character={character} />
       <div className="flex flex-col font-rm-mont w-full rounded-r-xl md:w-[371px] md:h-[137px] md:pt-[12px] md:pr-[8px] md:pb-[16px] md:pl-[16px]">
         <div className="flex items-center justify-between">
-          <h3 className="font-semibold text-lg leading-8 tracking-normal">
-            {character.name.length > 20
-              ? `${character.name.slice(0, 20)}...`
-              : character.name}
-          </h3>
+          <Link
+            to={`/character/${character.id}`}
+            state={{ backgroundLocation: location }}
+          >
+            <h3 className="font-semibold text-lg leading-8 tracking-normal hover:underline transition-discrete duration-300 ease-in-out">
+              {character.name.length > 20
+                ? `${character.name.slice(0, 20)}...`
+                : character.name}
+            </h3>
+          </Link>
           <button
             type="button"
             className="bg-rm-primary-100 w-[71px] h-[32px] flex items-center justify-center gap-1 rounded-full font-medium text-sm leading-5 tracking-normal text-center align-middle"

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "../../store/store";
 import type { Character } from "../../utils/types";
-import type { RootState } from "../store";
 import axios from "axios";
 
 const API_URL = "https://rickandmortyapi.com/api/character";
@@ -10,6 +10,8 @@ interface CharactersState {
   all: Character[];
   filtered: Character[];
   selected: Character | null;
+  episodes: string[];
+  firstSeenIn: string | null;
   loading: boolean;
   error: string | null;
   filters: {
@@ -28,6 +30,8 @@ const initialState: CharactersState = {
   all: [],
   filtered: [],
   selected: null,
+  episodes: [],
+  firstSeenIn: null,
   loading: false,
   error: null,
   filters: {
@@ -66,8 +70,27 @@ export const fetchCharacters = createAsyncThunk(
 export const fetchCharacterById = createAsyncThunk(
   "characters/fetchById",
   async (id: number) => {
-    const res = await axios.get(`${API_URL}/${id}`);
-    return res.data;
+    const characterRes = await axios.get(`${API_URL}/${id}`);
+    const character: Character = characterRes.data;
+
+    const episodeNames: string[] = [];
+    let firstSeenIn: string | null = null;
+
+    if (character.episode.length > 0) {
+      const episodeResponses = await Promise.all(
+        character.episode.map((url) => axios.get(url))
+      );
+      episodeNames.push(
+        ...episodeResponses.map((e: { data: { name: string } }) => e.data.name)
+      );
+      firstSeenIn = episodeResponses[0].data.name;
+    }
+
+    return {
+      character,
+      episodes: episodeNames,
+      firstSeenIn,
+    };
   }
 );
 
@@ -78,29 +101,18 @@ const applyFilters = (
   let result = [...characters];
   const { name, species, gender, status, order } = filters;
 
-  if (name) {
+  if (name)
     result = result.filter((c) =>
       c.name.toLowerCase().includes(name.toLowerCase())
     );
-  }
-
-  if (species.length) {
+  if (species.length)
     result = result.filter((c) => species.includes(c.species.toLowerCase()));
-  }
-
-  if (gender.length) {
+  if (gender.length)
     result = result.filter((c) => gender.includes(c.gender.toLowerCase()));
-  }
-
-  if (status.length) {
+  if (status.length)
     result = result.filter((c) => status.includes(c.status.toLowerCase()));
-  }
-
-  if (order === "asc") {
-    result.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (order === "desc") {
-    result.sort((a, b) => b.name.localeCompare(a.name));
-  }
+  if (order === "asc") result.sort((a, b) => a.name.localeCompare(b.name));
+  if (order === "desc") result.sort((a, b) => b.name.localeCompare(a.name));
 
   return result;
 };
@@ -130,6 +142,11 @@ const charactersSlice = createSlice({
     setViewMode(state, action: PayloadAction<"all" | "favorites">) {
       state.viewMode = action.payload;
     },
+    clearSelectedCharacter(state) {
+      state.selected = null;
+      state.episodes = [];
+      state.firstSeenIn = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -147,7 +164,9 @@ const charactersSlice = createSlice({
         state.error = action.error.message || "Error";
       })
       .addCase(fetchCharacterById.fulfilled, (state, action) => {
-        state.selected = action.payload;
+        state.selected = action.payload.character;
+        state.episodes = action.payload.episodes;
+        state.firstSeenIn = action.payload.firstSeenIn;
       });
   },
 });
@@ -158,6 +177,7 @@ export const {
   setNameFilter,
   setCurrentPage,
   setViewMode,
+  clearSelectedCharacter,
 } = charactersSlice.actions;
 
 export const selectPaginatedCharacters = (state: RootState) => {
