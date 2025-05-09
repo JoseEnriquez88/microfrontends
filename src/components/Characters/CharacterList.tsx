@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { selectPaginatedCharacters } from "../../store/features/charactersSlice";
 import type { RootState } from "../../store/store";
 import CharacterCard from "./CharacterCard";
+import NoResults from "./NoResults";
 
 const CharacterList = () => {
   const viewMode = useSelector((state: RootState) => state.characters.viewMode);
@@ -30,11 +31,7 @@ const CharacterList = () => {
       : filteredCharacters;
 
   if (characters.length === 0) {
-    return (
-      <p className="font-rm-mont text-center text-gray-500 py-6">
-        No se encontraron personajes.
-      </p>
-    );
+    return <NoResults />;
   }
 
   return (

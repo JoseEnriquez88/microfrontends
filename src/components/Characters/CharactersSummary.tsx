@@ -27,14 +27,11 @@ const CharactersSummary = () => {
   const activeFilters: string[] = [];
 
   if (viewMode === "all") {
-    if (filters.name)
-      activeFilters.push(`Nombre: "${filters.name}"`);
+    if (filters.name) activeFilters.push(`Nombre: "${filters.name}"`);
     if (filters.species.length)
       activeFilters.push(safeLabel(filters.species[0]));
-    if (filters.gender.length)
-      activeFilters.push(safeLabel(filters.gender[0]));
-    if (filters.status.length)
-      activeFilters.push(safeLabel(filters.status[0]));
+    if (filters.gender.length) activeFilters.push(safeLabel(filters.gender[0]));
+    if (filters.status.length) activeFilters.push(safeLabel(filters.status[0]));
   }
 
   return (
@@ -42,7 +39,6 @@ const CharactersSummary = () => {
       <h3 className="text-rm-neutral-600 font-semibold text-[18px] leading-[32px] tracking-normal text-center">
         <strong className="text-rm-neutral-800">{total}</strong> personaje
         {total !== 1 && "s"}
-        {activeFilters.length > 0 && <>: {activeFilters.join(", ")}</>}
       </h3>
     </div>
   );

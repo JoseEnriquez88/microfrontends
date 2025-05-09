@@ -2,7 +2,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <footer className="bg-rm-neutral-800 font-rm-mont w-full h-[100px] pt-[24px] px-[8px] pb-[56px] flex flex-col items-center gap-4">
+    <footer className="bg-rm-neutral-800 mt-auto font-rm-mont w-full h-[100px] pt-[24px] px-[8px] pb-[56px] flex flex-col items-center gap-4">
       <h1 className="font-medium text-xs md:text-[14px] leading-[20px] tracking-normal text-rm-neutral-100 text-center">
         TM & © {new Date().getFullYear()} The Cartoon Network, Inc. All Rights
         Reserved.
