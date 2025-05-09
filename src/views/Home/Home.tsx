@@ -13,6 +13,7 @@ import ActiveFilters from "../../components/Characters/ActiveFilters";
 import CharactersSummary from "../../components/Characters/CharactersSummary";
 import CharacterList from "../../components/Characters/CharacterList";
 import PaginationControls from "../../components/Characters/PaginationControls";
+import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -44,6 +45,9 @@ const Home = () => {
       </div>
       <CharacterList />
       <PaginationControls />
+      <div className="w-full">
+        <Footer />
+      </div>
     </div>
   );
 };
