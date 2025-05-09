@@ -19,7 +19,7 @@ const NoResults = () => {
       </h4>
       <button
         onClick={handleReset}
-        className="w-[148px] h-[44px] gap-[16px] flex items-center font-bold text-sm leading-5 tracking-normal text-center align-middle text-rm-primary-900"
+        className="w-[148px] h-[44px] gap-[16px] bg-rm-white hover:bg-rm-primary-500 rounded-full flex items-center justify-center font-bold text-sm leading-5 tracking-normal align-middle text-rm-primary-900 transition-colors duration-300 ease-in-out cursor-pointer"
       >
         Limpiar filtros
       </button>
