@@ -28,3 +28,34 @@
   --font-rm-mont: Montserrat, sans-serif;
   --font-rm-schwifty: schwifty, sans-serif;
 }
+
+.bg-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.bg-searchbar {
+  background-color: rgba(0, 0, 0, 0.829);
+}
+
+.bg-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    34.13% 49.16% at 49.24% 34.3%,
+    rgba(0, 0, 0, 0) 5.64%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  background-blend-mode: multiply;
+  z-index: 0;
+}

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-// bg-[url('/assets/images/hero.png')]
 const Hero = () => {
   return (
-    <div className="relative h-screen w-screen  bg-[url('/assets/images/hero.png')] bg-cover bg-center b-12 px-50 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black/50 before:z-0 flex flex-col items-center justify-center pb-20 gap-10">
+    <div className="relative bg-hero h-screen w-screen bg-[url('/assets/images/hero.png')] bg-cover bg-center b-12 px-50 flex flex-col items-center justify-center pb-20 gap-10">
       <img
         src="/assets/images/logo.png"
         alt="logo"

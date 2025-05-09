@@ -15,15 +15,20 @@ const CharacterList = () => {
   }, [dispatch]);
 
   if (loading)
-    return <p className="font-rm-mont text-center text-lg">Cargando personajes...</p>;
-  if (error) return <p className="font-rm-mont text-center text-red-500">{error}</p>;
+    return (
+      <p className="font-rm-mont text-center text-lg">Cargando personajes...</p>
+    );
+  if (error)
+    return <p className="font-rm-mont text-center text-red-500">{error}</p>;
   if (filtered.length === 0)
     return (
-      <p className="font-rm-mont text-center text-gray-500">No se encontraron personajes.</p>
+      <p className="font-rm-mont text-center text-gray-500">
+        No se encontraron personajes.
+      </p>
     );
 
   return (
-    <div className="flex flex-wrap justify-center gap-6 md:w-[1040px] h-screen">
+    <div className="flex flex-wrap justify-center gap-6 md:w-[1040px] h-full">
       {filtered.map((character) => (
         <CharacterCard key={character.id} character={character} />
       ))}
