@@ -33,21 +33,21 @@ const Home = () => {
   }, [viewMode, dispatch]);
 
   return (
-    <div className="bg-rm-neutral-50 min-h-[100dvh] flex flex-col items-center">
+    <div className="bg-rm-neutral-50 min-h-[100dvh] w-screen flex flex-col items-center">
       <Navbar />
       <main className="flex-grow">
-        <div className="flex justify-between md:w-[1040px] py-6">
+        <div className="flex justify-between w-screen md:w-[1040px] py-6 px-[16px] md:px-0">
           <CharacterViewSelector />
           <FilterButtonWithModal />
         </div>
-        <div className="flex items-center justify-between w-full md:w-[1040px] py-6 relative">
+        <div className="flex flex-col md:flex-row items-center justify-between w-screen md:w-[1040px] py-6 mb-4 md:mb-0 relative">
           <ActiveFilters />
           <CharactersSummary />
         </div>
         <CharacterList />
         <PaginationControls />
       </main>
-      <div className="w-full">
+      <div className="w-screen">
         <Footer />
       </div>
     </div>
