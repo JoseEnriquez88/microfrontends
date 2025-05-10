@@ -44,7 +44,7 @@ const CharacterDetail = () => {
       : undefined;
 
   return (
-    <div className="fixed bg-[url(/assets/images/header.jpg)] bg-hero inset-0 flex items-center justify-center z-50 font-rm-mont">
+    <div className="fixed bg-hero inset-0 flex items-center justify-center z-50 font-rm-mont">
       <div className="bg-rm-neutral-50 md:w-[700px] md:h-[850px] rounded-xl shadow-xl relative">
         <button
           onClick={() => navigate(backgroundLocation || "/home")}
