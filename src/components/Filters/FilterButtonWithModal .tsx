@@ -11,7 +11,7 @@ const FilterButtonWithModal = () => {
         onClick={() => setOpen(true)}
         className="bg-rm-white h-[44px] w-[44px] rounded-full font-semibold flex items-center justify-center p-2 cursor-pointer"
       >
-        <SettingsIcon className=" text-rm-neutral-400" />
+        <SettingsIcon className="text-rm-neutral-400" />
       </button>
 
       {open && <FiltersModal onClose={() => setOpen(false)} />}
