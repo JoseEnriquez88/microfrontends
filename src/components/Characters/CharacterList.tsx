@@ -35,7 +35,7 @@ const CharacterList = () => {
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-6 md:w-[1040px] h-full">
+    <div className="flex flex-wrap justify-center gap-6 md:w-[1040px] w-full h-full">
       {characters.map((character) => (
         <CharacterCard key={character.id} character={character} />
       ))}
