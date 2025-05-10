@@ -44,7 +44,7 @@ const CharacterDetail = () => {
       : undefined;
 
   return (
-    <div className="fixed bg-rm-neutral-600 inset-0 flex items-center justify-center z-50 font-rm-mont">
+    <div className="fixed bg-[url(/assets/images/header.jpg)] bg-hero inset-0 flex items-center justify-center z-50 font-rm-mont">
       <div className="bg-rm-neutral-50 md:w-[700px] md:h-[850px] rounded-xl shadow-xl relative">
         <button
           onClick={() => navigate(backgroundLocation || "/home")}
@@ -62,7 +62,7 @@ const CharacterDetail = () => {
             className="size-[128px] rounded-full border-4 border-white"
           />
           <div className="flex flex-col md:mt-16 md:pt-2">
-            <h2 className="text-rm-neutral-800 font-semibold md:text-[32px] leading-[32px] tracking-normal">
+            <h2 className="text-rm-neutral-800 font-semibold md:text-2xl leading-[32px] tracking-normal">
               {selected.name}
             </h2>
             <p className="text-rm-neutral-600 font-medium text-[14px] leading-[20px] tracking-normal">
@@ -72,24 +72,27 @@ const CharacterDetail = () => {
         </div>
 
         <div className="flex md:pt-22 md:px-[24px] gap-8">
-          <div className="bg-rm-white flex flex-col p-4 gap-2 rounded-lg shadow-md md:w-[150px] md:h-[253px]">
+          <div className="bg-rm-white flex flex-col p-4 gap-1 rounded-lg shadow-md md:w-[150px] md:h-[253px]">
             <h4 className="font-bold text-lg text-rm-neutral-800">
               Información
             </h4>
             <h5 className="font-bold text-sm text-rm-neutral-400">Género:</h5>
-            <p className="text-lg text-rm-neutral-600">{selected.gender}</p>
+            <p className="text-[16px] text-rm-neutral-600">{selected.gender}</p>
             <h5 className="font-bold text-sm text-rm-neutral-400">Origen:</h5>
-            <p className="text-lg text-rm-neutral-600">
+            <p className="text-[16px] text-rm-neutral-600">
               {selected.origin.name}
             </p>
             <h5 className="font-bold text-sm text-rm-neutral-400">Estado:</h5>
             <button
               type="button"
-              className="bg-rm-primary-100 w-[71px] h-[32px] flex items-center justify-center gap-1 rounded-full font-medium leading-5 tracking-normal text-center align-middle text-base text-rm-neutral-600"
+              className="bg-rm-primary-100 w-24 h-10 flex items-center justify-center gap-1 rounded-full font-medium leading-5 tracking-normal text-center align-middle text-base text-rm-neutral-600"
             >
               <img
                 src={statusIcon}
-                className="w-[13.333px] h-[13.333px] text-rm-primary-900"
+                className={`size-[14px] text-rm-primary-900 ${
+                  !statusIcon ? "hidden" : ""
+                }`}
+                alt=""
               />
               {selected.status}
             </button>
@@ -112,15 +115,18 @@ const CharacterDetail = () => {
             <h5 className="text-[13px] font-bold text-rm-neutral-400">
               First seen in
             </h5>
-            <p className="text-rm-neutral-600 text-xl">
-              {firstSeenIn || "Desconocido"}
+            <p className="text-rm-neutral-600 text-lg">
+              {firstSeenIn?.includes(" - ")
+                ? firstSeenIn.split(" - ").slice(1).join(" - ")
+                : firstSeenIn}
             </p>
           </div>
+
           <div className="w-1/2">
             <h5 className="text-[13px] font-bold text-rm-neutral-400">
               Last known location
             </h5>
-            <p className="text-rm-neutral-600 text-xl">
+            <p className="text-rm-neutral-600 text-lg">
               {selected.location.name}
             </p>
           </div>
