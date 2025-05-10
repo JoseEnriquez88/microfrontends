@@ -11,10 +11,10 @@ const NoResults = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center gap-6 py-16 font-rm-mont text-center">
-      <h1 className="font-bold text-4xl leading-none tracking-normal text-center align-middle text-rm-neutral-800">
+      <h1 className="font-bold text-[32px] md:text-4xl leading-none tracking-normal text-center align-middle text-rm-neutral-800">
         Oh no!
       </h1>
-      <h4 className="text-2xl font-semibold text-neutral-600 tracking-normal">
+      <h4 className="text-[16px] md:text-2xl font-semibold text-neutral-600 tracking-normal">
         ¡Pareces perdido en tu viaje!
       </h4>
       <button

@@ -29,7 +29,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ character }) => {
   return (
     <button
       onClick={toggleFavorite}
-      className={`absolute cursor-pointer top-2 left-2 size-[44px] rounded-full ${
+      className={`absolute cursor-pointer top-2 md:left-2 right-2 size-[44px] rounded-full ${
         isFavorite ? "bg-rm-primary-300" : "bg-rm-white"
       } flex items-center justify-center transition-colors`}
       aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
