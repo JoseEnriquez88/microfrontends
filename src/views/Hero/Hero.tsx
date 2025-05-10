@@ -16,7 +16,7 @@ const Hero = () => {
       </h3>
       <Link
         to="/home"
-        className="relative animate-pulse hover:animate-none flex items-center justify-center rounded-full bg-rm-primary-500 hover:bg-rm-primary-300 md:w-[119px] md:h-[44px] font-semibold text-lg leading-8 tracking-normal text-center transition-colors duration-300 ease-in-out drop-shadow-md brightness-125"
+        className="relative flex items-center justify-center rounded-full bg-rm-primary-500 hover:bg-rm-primary-300 md:w-[119px] md:h-[44px] font-semibold text-lg leading-8 tracking-normal text-center transition-colors duration-300 ease-in-out drop-shadow-md brightness-125"
       >
         Comenzar
       </Link>
