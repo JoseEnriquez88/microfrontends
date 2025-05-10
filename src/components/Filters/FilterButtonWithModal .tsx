@@ -4,7 +4,6 @@ import SettingsIcon from "../SvgComponents/SettingsIcon";
 
 const FilterButtonWithModal = () => {
   const [open, setOpen] = useState<boolean>(false);
-
   return (
     <>
       <button
@@ -19,3 +18,4 @@ const FilterButtonWithModal = () => {
   );
 };
 export default FilterButtonWithModal;
+ 
