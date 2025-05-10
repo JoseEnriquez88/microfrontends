@@ -40,11 +40,14 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
           </Link>
           <button
             type="button"
-            className="bg-rm-primary-100 w-[71px] h-[32px] flex items-center justify-center gap-1 rounded-full font-medium text-sm leading-5 tracking-normal text-center align-middle"
+            className="bg-rm-primary-100 w-24 h-8 flex items-center justify-center gap-1 rounded-full font-medium text-sm leading-5 tracking-normal text-center align-middle"
           >
             <img
               src={statusIcon}
-              className="w-[13.333333px] h-[13.333333px] text-rm-primary-900"
+              className={`size-[14px] text-rm-primary-900 ${
+                !statusIcon ? "hidden" : ""
+              }`}
+              alt=""
             />
             {character.status}
           </button>
