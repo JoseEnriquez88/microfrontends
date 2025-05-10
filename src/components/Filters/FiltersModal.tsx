@@ -142,7 +142,7 @@ const FiltersModal = ({ onClose }: { onClose: () => void }) => {
           </button>
           <button
             onClick={handleApply}
-            className="bg-rm-primary-500 text-rm-primary-900 p-4 rounded-full font-semibold cursor-pointer"
+            className="bg-rm-primary-500 text-rm-primary-900 p-3 rounded-full font-semibold cursor-pointer"
           >
             Aplicar filtros
           </button>
