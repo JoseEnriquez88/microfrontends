@@ -9,8 +9,8 @@ Aplicación web construida con **React + Redux Toolkit**, basada en la API públ
 1. Clona el repositorio:
 
    ```bash
-   git clone <tu-repo>
-   cd reto
+   git clone https://github.com/JoseEnriquez88/microfrontends.git
+   cd microfrontends
    ```
 
 2. Instala las dependencias:
