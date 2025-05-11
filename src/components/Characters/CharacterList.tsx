@@ -17,6 +17,7 @@ const CharacterList = () => {
   const nameFilter = useSelector(
     (state: RootState) => state.characters.filters.name
   );
+  const loading = useSelector((state: RootState) => state.characters.loading);
 
   const filteredFavorites = favorites.filter((c) =>
     c.name.toLowerCase().includes(nameFilter.toLowerCase())
@@ -29,6 +30,14 @@ const CharacterList = () => {
           currentPage * itemsPerPage
         )
       : filteredCharacters;
+
+  if (loading) {
+    return (
+      <div className="w-full flex justify-center items-center h-[200px] font-rm-mont text-lg text-rm-neutral-600">
+        Cargando personajes...
+      </div>
+    );
+  }
 
   if (characters.length === 0) {
     return <NoResults />;
