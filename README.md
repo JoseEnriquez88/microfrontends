@@ -100,4 +100,4 @@ npm run preview     # Vista previa post-build
 
 ## ✍️ Autor
 
-Desarrollado por **<a href="https://enriquez-jose.vercel.app/">Jose Enriquez</a>** – como parte de un reto técnico.
+Desarrollado por **<a href="https://enriquez-jose.vercel.app/" target="_blank" rel="noreferrer">Jose Enriquez</a>** – como parte de un reto técnico.
