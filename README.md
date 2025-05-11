@@ -98,6 +98,12 @@ npm run preview     # Vista previa post-build
 
 ---
 
+## 📌 Consideraciones Técnicas
+
+> El reto menciona la implementación de microfrontends. Actualmente, esta arquitectura no fue aplicada en el proyecto debido a que aún no tuve oportunidad de implementarla en producción. Sin embargo, reconozco su importancia y la tengo como tema principal de investigación para aplicar próximamente. Algunas tecnologías que planeo explorar son **Webpack Module Federation** y **single-spa**.
+
+---
+
 ## ✍️ Autor
 
 Desarrollado por **<a href="https://enriquez-jose.vercel.app/" target="_blank" rel="noreferrer">Jose Enriquez</a>** – como parte de un reto técnico.
