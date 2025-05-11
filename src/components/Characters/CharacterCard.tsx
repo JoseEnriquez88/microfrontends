@@ -23,7 +23,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
         src={character.image}
         alt={character.name}
         loading="lazy"
-        className="object-cover w-[343px] h-[238px] md:w-[137px] md:h-[137px] rounded-l-xl"
+        className="object-cover w-[343px] h-[238px] md:w-[137px] md:h-[137px] rounded-t-xl md:rounded-t-none md:rounded-l-xl"
       />
       <FavoriteButton character={character} />
       <div className="flex flex-col font-rm-mont w-full rounded-r-xl md:w-[371px] pt-[16px] px-[16px] md:px-0 md:h-[137px] md:pt-[12px] md:pr-[8px] md:pb-[16px] md:pl-[16px]">

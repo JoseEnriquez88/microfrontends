@@ -10,6 +10,7 @@ import RelatedCharactersSlider from "../components/Characters/RelatedCharactersS
 import TimesIcon from "../components/SvgComponents/TimesIcon";
 import aliveIcon from "/assets/svg/ic-tick-circle.svg";
 import deadIcon from "/assets/svg/ic-close-circle.svg";
+import { IoMdArrowBack } from "react-icons/io";
 
 const CharacterDetail = () => {
   const { id } = useParams();
@@ -45,43 +46,60 @@ const CharacterDetail = () => {
 
   return (
     <div className="fixed bg-hero inset-0 flex items-center justify-center z-50 font-rm-mont">
-      <div className="bg-rm-neutral-50 md:w-[700px] md:h-[850px] rounded-xl shadow-xl relative">
+      <div className="bg-rm-neutral-50 w-full h-full min-h-[95dvh] overflow-y-auto md:w-[700px] md:h-[850px] rounded-xl shadow-xl relative">
         <button
           onClick={() => navigate(backgroundLocation || "/home")}
-          className="absolute bg-rm-white rounded-full p-2 top-4 right-4 text-rm-primary-400 z-10 cursor-pointer"
+          className="absolute hidden md:block bg-rm-white rounded-full p-2 top-4 right-4 text-rm-primary-400 z-10 cursor-pointer"
         >
           <TimesIcon className="w-6 h-6" />
         </button>
+        <button
+          onClick={() => navigate(backgroundLocation || "/home")}
+          className="absolute md:hidden top-4 left-4 z-10"
+        >
+          <IoMdArrowBack className="size-8 text-rm-white" />
+        </button>
+        <div className="relative overflow-hidden md:rounded-t-xl h-[169px] md:h-[128px] w-full bg-[url(/assets/images/header.jpg)] bg-cover bg-hero" />
 
-        <div className="relative overflow-hidden rounded-t-xl md:h-[128px] w-full bg-[url(/assets/images/header.jpg)] bg-cover bg-hero" />
-
-        <div className="p-6 md:-mt-22 flex items-center gap-4 absolute">
+        <div className="absolute flex flex-col md:flex-row items-center gap-4 w-full md:p-6 md:-mt-22 left-1/2 transform -translate-x-1/2">
           <img
             src={selected.image}
             alt={selected.name}
-            className="size-[128px] rounded-full border-4 border-white"
+            className="size-[140px] md:size-[128px] -mt-18 md:mt-0 rounded-full border-4 border-white"
           />
-          <div className="flex flex-col md:mt-16 md:pt-2">
-            <h2 className="text-rm-neutral-800 font-semibold md:text-2xl leading-[32px] tracking-normal">
+          <div className="flex flex-col sm:justify-center md:mt-16 md:pt-2">
+            <h2 className="text-rm-neutral-800 font-semibold text-2xl leading-[32px] tracking-normal">
               {selected.name}
             </h2>
-            <p className="text-rm-neutral-600 font-medium text-[14px] leading-[20px] tracking-normal">
+            <p className="text-rm-neutral-600 font-medium text-[14px] leading-[20px] text-center md:text-left tracking-normal">
               {selected.species}
             </p>
           </div>
         </div>
 
-        <div className="flex md:pt-22 md:px-[24px] gap-8">
+        <div className="flex flex-col mt-[150px] md:mt-0 md:flex-row md:pt-22 md:px-[24px] gap-4 md:gap-8">
           <div className="bg-rm-white flex flex-col p-4 gap-1 rounded-lg shadow-md md:w-[150px] md:h-[253px]">
             <h4 className="font-bold text-lg text-rm-neutral-800">
               Información
             </h4>
-            <h5 className="font-bold text-sm text-rm-neutral-400">Género:</h5>
-            <p className="text-[16px] text-rm-neutral-600">{selected.gender}</p>
-            <h5 className="font-bold text-sm text-rm-neutral-400">Origen:</h5>
-            <p className="text-[16px] text-rm-neutral-600">
-              {selected.origin.name}
-            </p>
+            <div className="flex flex-row md:flex-col gap-[16px] md:gap-0">
+              <div className="flex flex-col w-1/2 md:w-auto">
+                <h5 className="font-bold text-sm text-rm-neutral-400">
+                  Género:
+                </h5>
+                <p className="text-[16px] text-rm-neutral-600">
+                  {selected.gender}
+                </p>
+              </div>
+              <div className="flex flex-col w-1/2 md:w-auto">
+                <h5 className="font-bold text-sm text-rm-neutral-400">
+                  Origen:
+                </h5>
+                <p className="text-[16px] text-rm-neutral-600 break-words md:break-normal">
+                  {selected.origin.name}
+                </p>
+              </div>
+            </div>
             <h5 className="font-bold text-sm text-rm-neutral-400">Estado:</h5>
             <button
               type="button"
@@ -110,7 +128,7 @@ const CharacterDetail = () => {
           </div>
         </div>
 
-        <div className="flex  md:px-[24px] mx-auto gap-4 mt-4">
+        <div className="flex flex-col md:flex-row px-[16px] md:px-[24px] mx-auto gap-4 mt-4">
           <div className="w-1/2">
             <h5 className="text-[13px] font-bold text-rm-neutral-400">
               First seen in
@@ -132,7 +150,7 @@ const CharacterDetail = () => {
           </div>
         </div>
 
-        <div className="px-6 pb-8">
+        <div className="md:px-6 pl-[16px] pb-8">
           <RelatedCharactersSlider />
         </div>
       </div>
