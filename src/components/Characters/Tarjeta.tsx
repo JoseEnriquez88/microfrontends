@@ -8,7 +8,7 @@ interface CharacterCardProps {
   character: Character;
 }
 
-const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
+const Tarjeta: React.FC<CharacterCardProps> = ({ character }) => {
   const location = useLocation();
   const statusIcon =
     character.status === "Alive"
@@ -79,4 +79,4 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   );
 };
 
-export default CharacterCard;
+export default Tarjeta;
