@@ -58,6 +58,7 @@ Esta estructura facilita:
 - **Swiper** – Slider responsive para personajes relacionados
 - **Axios** – Cliente HTTP para consumo de la API
 - **Redux Persist** – Persistencia de favoritos en localStorage
+- **Framer Motion** – Animaciones modernas y suaves en componentes como Hero y CharacterCard.
 
 ---
 
