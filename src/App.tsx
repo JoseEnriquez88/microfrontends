@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 
 const Hero = lazy(() => import("./views/Hero/Hero"));
 const Home = lazy(() => import("./views/Home/Home"));
-const CharacterDetail = lazy(() => import("./views/CharacterDetail"));
+const CharacterDetail = lazy(() => import("./views/CharacterDetail/CharacterDetail"));
 
 function App() {
   const location = useLocation();

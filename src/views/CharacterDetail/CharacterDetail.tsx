@@ -4,10 +4,10 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
   fetchCharacterById,
   clearSelectedCharacter,
-} from "../store/features/charactersSlice";
-import type { RootState, AppDispatch } from "../store/store";
-import RelatedCharactersSlider from "../components/Characters/RelatedCharactersSlider";
-import TimesIcon from "../components/SvgComponents/TimesIcon";
+} from "../../store/features/charactersSlice";
+import type { RootState, AppDispatch } from "../../store/store";
+import RelatedCharactersSlider from "../../components/Characters/RelatedCharactersSlider";
+import TimesIcon from "../../components/SvgComponents/TimesIcon";
 import aliveIcon from "/assets/svg/ic-tick-circle.svg";
 import deadIcon from "/assets/svg/ic-close-circle.svg";
 import { IoMdArrowBack } from "react-icons/io";
