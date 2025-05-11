@@ -7,12 +7,14 @@ Aplicación web construida con **React + Redux Toolkit**, basada en la API públ
 ## 🚀 Instalación y ejecución
 
 1. Clona el repositorio:
+
    ```bash
    git clone <tu-repo>
    cd reto
    ```
 
 2. Instala las dependencias:
+
    ```bash
    npm install
    ```
@@ -65,8 +67,6 @@ Esta estructura facilita:
 - **ESLint** – Linter de código (con plugin de React)
 - **Prettier** – Formateador automático de código (formateo constante aplicado)
 - **TypeScript** – Tipado estático robusto
-
-> Aunque no se ha integrado aún, se recomienda añadir **Husky** y **lint-staged** para hooks de git como `pre-commit`.
 
 ---
 
