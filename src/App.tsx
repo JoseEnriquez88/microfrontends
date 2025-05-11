@@ -12,7 +12,6 @@ function App() {
 
   return (
     <>
-      {/* Rutas base: puede incluir todo, incluida la ruta de detail */}
       <Routes location={backgroundLocation || location}>
         <Route path="/" element={<Hero />} />
         <Route path="/home" element={<Home />} />
