@@ -1,55 +1,11 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
-// motionVariants.ts
-export const varianstImage = {
-  hidden: { opacity: 0, y: -20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
-
-// motionVariants.ts
-export const variantsH1 = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: 0.2,
-    },
-  },
-};
-
-// motionVariants.ts
-export const variantsH3 = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: 0.4,
-    },
-  },
-};
-
-// motionVariants.ts
-export const variantsContainer = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: 0.6,
-    },
-  },
-};
-
+import {
+  varianstImage,
+  variantsH1,
+  variantsH3,
+  variantsContainer,
+} from "../../utils/motion/hero";
 
 const Hero = () => {
   return (
@@ -83,9 +39,9 @@ const Hero = () => {
       </motion.h3>
 
       <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={variantsContainer}
+        initial="hidden"
+        animate="visible"
+        variants={variantsContainer}
       >
         <Link
           to="/home"
