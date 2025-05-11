@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import type { Character } from "../../utils/types";
 import FavoriteButton from "./FavoriteButton";
+import { motion } from "framer-motion";
 import aliveIcon from "/assets/svg/ic-tick-circle.svg";
 import deadIcon from "/assets/svg/ic-close-circle.svg";
-
+import { CardVariants } from "../../utils/motion/card";
 interface CharacterCardProps {
   character: Character;
 }
@@ -18,7 +19,12 @@ const Tarjeta: React.FC<CharacterCardProps> = ({ character }) => {
       : undefined;
 
   return (
-    <div className="bg-rm-white rounded-xl w-[343px] h-[389px] md:w-[508px] md:h-[137px] flex flex-col md:flex-row relative">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={CardVariants}
+      className="bg-rm-white rounded-xl w-[343px] h-[389px] md:w-[508px] md:h-[137px] flex flex-col md:flex-row relative"
+    >
       <img
         src={character.image}
         alt={character.name}
@@ -78,7 +84,7 @@ const Tarjeta: React.FC<CharacterCardProps> = ({ character }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
