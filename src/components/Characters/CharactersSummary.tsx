@@ -35,8 +35,8 @@ const CharactersSummary = () => {
   }
 
   return (
-    <div className="font-rm-mont text-center absolute right-0">
-      <h3 className="text-rm-neutral-600 font-semibold text-[18px] leading-[32px] tracking-normal text-center">
+    <div className="font-rm-mont w-full md:w-auto md:absolute md:right-0 flex justify-end md:justify-start pr-[16px] md:pr-0">
+      <h3 className="text-rm-neutral-600 font-semibold text-[18px] leading-[32px] tracking-normal text-right md:text-left">
         <strong className="text-rm-neutral-800">{total}</strong> personaje
         {total !== 1 && "s"}
       </h3>

@@ -18,15 +18,15 @@ const Tarjeta: React.FC<CharacterCardProps> = ({ character }) => {
       : undefined;
 
   return (
-    <div className="bg-rm-white rounded-xl w-[508px] h-[137px] flex relative">
+    <div className="bg-rm-white rounded-xl w-[343px] h-[389px] md:w-[508px] md:h-[137px] flex flex-col md:flex-row relative">
       <img
         src={character.image}
         alt={character.name}
         loading="lazy"
-        className="object-cover w-[137px] h-[137px] rounded-l-xl"
+        className="object-cover w-[343px] h-[238px] md:w-[137px] md:h-[137px] rounded-t-xl md:rounded-t-none md:rounded-l-xl"
       />
       <FavoriteButton character={character} />
-      <div className="flex flex-col font-rm-mont w-full rounded-r-xl md:w-[371px] md:h-[137px] md:pt-[12px] md:pr-[8px] md:pb-[16px] md:pl-[16px]">
+      <div className="flex flex-col font-rm-mont w-full rounded-r-xl md:w-[371px] pt-[16px] px-[16px] md:px-0 md:h-[137px] md:pt-[12px] md:pr-[8px] md:pb-[16px] md:pl-[16px]">
         <div className="flex items-center justify-between">
           <Link
             to={`/character/${character.id}`}
@@ -40,11 +40,14 @@ const Tarjeta: React.FC<CharacterCardProps> = ({ character }) => {
           </Link>
           <button
             type="button"
-            className="bg-rm-primary-100 w-[71px] h-[32px] flex items-center justify-center gap-1 rounded-full font-medium text-sm leading-5 tracking-normal text-center align-middle"
+            className="bg-rm-primary-100 w-24 h-8 flex items-center justify-center gap-1 rounded-full font-medium text-sm leading-5 tracking-normal text-center align-middle"
           >
             <img
               src={statusIcon}
-              className="w-[13.333333px] h-[13.333333px] text-rm-primary-900"
+              className={`size-[14px] text-rm-primary-900 ${
+                !statusIcon ? "hidden" : ""
+              }`}
+              alt=""
             />
             {character.status}
           </button>
@@ -52,9 +55,9 @@ const Tarjeta: React.FC<CharacterCardProps> = ({ character }) => {
         <p className="font-medium text-rm-neutral-600 text-[14px] leading-[20px] tracking-normal">
           {character.species}
         </p>
-        <div className="flex items-center md:gap-20 md:mt-[16px]">
+        <div className="flex items-center gap-10 md:gap-20 mt-[16px]">
           <div className="flex flex-col md:gap-[4px]">
-            <h5 className="font-bold text-sm text-rm-neutral-400 leading-none tracking-wide">
+            <h5 className="font-bold text-[12px] md:text-sm text-rm-neutral-400 leading-none tracking-wide">
               Last know location
             </h5>
             <p className="text-rm-neutral-600 font-medium text-[14px] leading-[20px] tracking-normal">
@@ -64,7 +67,7 @@ const Tarjeta: React.FC<CharacterCardProps> = ({ character }) => {
             </p>
           </div>
           <div className="flex flex-col md:gap-[4px]">
-            <h5 className="font-bold text-sm text-rm-neutral-400 leading-none tracking-wide">
+            <h5 className="font-bold text-[12px] md:text-sm text-rm-neutral-400 leading-none tracking-wide">
               First seen in
             </h5>
             <p className="text-rm-neutral-600 font-medium text-[14px] leading-[20px] tracking-normal">

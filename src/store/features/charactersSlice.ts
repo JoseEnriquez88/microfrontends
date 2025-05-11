@@ -5,7 +5,6 @@ import type { Character } from "../../utils/types";
 import axios from "axios";
 
 const API_URL = "https://rickandmortyapi.com/api/character";
-
 interface CharactersState {
   all: Character[];
   filtered: Character[];
@@ -73,27 +72,30 @@ export const fetchCharacterById = createAsyncThunk(
     const characterRes = await axios.get(`${API_URL}/${id}`);
     const character: Character = characterRes.data;
 
-    const episodeNames: string[] = [];
+    const episodeFormatted: string[] = [];
     let firstSeenIn: string | null = null;
 
     if (character.episode.length > 0) {
       const episodeResponses = await Promise.all(
         character.episode.map((url) => axios.get(url))
       );
-      episodeNames.push(
-        ...episodeResponses.map((e: { data: { name: string } }) => e.data.name)
+
+      episodeFormatted.push(
+        ...episodeResponses.map((e) => `${e.data.episode} - ${e.data.name}`)
       );
+
       firstSeenIn = episodeResponses[0].data.name;
     }
 
     return {
       character,
-      episodes: episodeNames,
+      episodes: episodeFormatted,
       firstSeenIn,
     };
   }
 );
 
+// Filters application logic
 const applyFilters = (
   characters: Character[],
   filters: CharactersState["filters"]
@@ -117,6 +119,7 @@ const applyFilters = (
   return result;
 };
 
+// Slice definition
 const charactersSlice = createSlice({
   name: "characters",
   initialState,

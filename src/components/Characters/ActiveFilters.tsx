@@ -68,11 +68,11 @@ const ActiveFilters = () => {
   if (active.length === 0) return <div className="w-[50%] h-[32px]" />;
 
   return (
-    <div className="font-rm-mont w-full">
+    <div className="font-rm-mont w-full px-[16px] md:px-0">
       <h4 className="font-semibold text-[16px] leading-[100%] tracking-[2%] mb-2">
         Filtros aplicados
       </h4>
-      <div className="flex flex-wrap items-center gap-1">
+      <div className="flex flex-wrap items-center gap-1 overflow-x-auto">
         {active.map((filter, i) => (
           <span
             key={i}

@@ -16,9 +16,9 @@ const Navbar = () => {
       <img
         src="/assets/images/logo.png"
         alt="logo"
-        className="md:w-[273px] md:h-[96px] z-1"
+        className="w-[273px] h-[96px] z-1"
       />
-      <div className="bg-searchbar flex items-center md:w-[1040px] md:h-[56px] text-rm-neutral-50 rounded-xl py-[4px] pr-[16px] pl-2 border-[2px] border-rm-neutral-400 z-1">
+      <div className="bg-searchbar flex items-center w-[343px] md:w-[1040px] md:h-[56px] text-rm-neutral-50 rounded-xl py-[4px] pr-[16px] pl-2 border-[2px] border-rm-neutral-400 z-1">
         <SearchIcon className="text-rm-primary-700 size-[30px]" />
         <input
           type="text"

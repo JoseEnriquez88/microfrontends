@@ -47,7 +47,7 @@ const RelatedCharactersSlider = () => {
                 alt={char.name}
                 className="w-full h-[144px] object-cover rounded-t-xl"
               />
-              <div className="flex flex-col w-full md:px-[16px]">
+              <div className="flex flex-col w-full px-[16px]">
                 <Link
                   to={`/character/${char.id}`}
                   state={{ backgroundLocation: location }}
