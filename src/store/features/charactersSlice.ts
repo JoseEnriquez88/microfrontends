@@ -95,7 +95,6 @@ export const fetchCharacterById = createAsyncThunk(
   }
 );
 
-// Filters application logic
 const applyFilters = (
   characters: Character[],
   filters: CharactersState["filters"]
@@ -119,7 +118,6 @@ const applyFilters = (
   return result;
 };
 
-// Slice definition
 const charactersSlice = createSlice({
   name: "characters",
   initialState,
