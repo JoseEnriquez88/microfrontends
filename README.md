@@ -2,7 +2,7 @@
 
 Aplicación web construida con **React + Redux Toolkit**, basada en la API pública de Rick and Morty, que permite explorar, buscar, filtrar y ver en detalle personajes, incluyendo favoritos persistentes y un diseño responsive adaptable a distintas pantallas.
 
-Link a deploy: https://microfrontends-ruddy-ten.vercel.app/
+Link a deploy: https://microfrontends-rosy-nine.vercel.app/
 
 ---
 
