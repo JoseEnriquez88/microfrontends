@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -6,6 +6,7 @@ import {
   clearSelectedCharacter,
 } from "../../store/features/charactersSlice";
 import type { RootState, AppDispatch } from "../../store/store";
+import ImageModal from "../../components/Characters/ImageModal";
 import RelatedCharactersSlider from "../../components/Characters/RelatedCharactersSlider";
 import TimesIcon from "../../components/SvgComponents/TimesIcon";
 import aliveIcon from "/assets/svg/ic-tick-circle.svg";
@@ -16,6 +17,7 @@ const CharacterDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const [showImage, setShowimage] = useState<boolean>(false);
   const backgroundLocation = location.state?.backgroundLocation;
   const dispatch = useDispatch<AppDispatch>();
   const { selected, episodes, firstSeenIn, loading } = useSelector(
@@ -65,7 +67,9 @@ const CharacterDetail = () => {
           <img
             src={selected.image}
             alt={selected.name}
-            className="size-[140px] md:size-[128px] -mt-18 md:mt-0 rounded-full border-4 border-white"
+            loading="lazy"
+            onClick={() => setShowimage(true)}
+            className="size-[140px] md:size-[128px] -mt-18 md:mt-0 rounded-full border-4 border-white cursor-pointer"
           />
           <div className="flex flex-col sm:justify-center md:mt-16 md:pt-2">
             <h2 className="text-rm-neutral-800 font-semibold text-2xl leading-[32px] tracking-normal">
@@ -111,11 +115,11 @@ const CharacterDetail = () => {
                   !statusIcon ? "hidden" : ""
                 }`}
                 alt=""
+                loading="lazy"
               />
               {selected.status}
             </button>
           </div>
-          {/* ACA ESTA CONTENDOR DE EPISODIOS OKAMI */}
           <div className="bg-rm-white flex flex-col p-4 rounded-lg w-full">
             <h4 className="font-bold text-lg text-rm-neutral-800">Episodios</h4>
             <ul className="list-none flex flex-col gap-2 pt-2">
@@ -154,6 +158,13 @@ const CharacterDetail = () => {
           <RelatedCharactersSlider />
         </div>
       </div>
+      {showImage && (
+        <ImageModal
+          src={selected.image}
+          alt={selected.name}
+          onClose={() => setShowimage(false)}
+        />
+      )}
     </div>
   );
 };
