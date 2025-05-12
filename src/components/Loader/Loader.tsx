@@ -1,9 +1,8 @@
-import * as React from "react";
+import { useEffect } from "react";
 import gsap from "gsap";
-import "./loader.css";
 
 const Loader = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     const unmountLoading = gsap.timeline({ paused: true });
     unmountLoading.to(
       "#loading-container",
@@ -58,17 +57,8 @@ const Loader = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100vh",
-        width: "100%",
-        border: "1px solid black",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div style={{ width: 300 }}>
+    <div className="flex h-screen w-full bg-black border border-black justify-center items-center">
+      <div className="w-[500px]">
         <svg
           id="loading-container"
           viewBox="0 0 258 274"
