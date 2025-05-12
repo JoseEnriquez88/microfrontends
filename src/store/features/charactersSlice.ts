@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../store/store";
+// import type { RootState } from "../../store/store";
 import type { Character } from "../../utils/types";
 import axios from "axios";
 
@@ -181,11 +181,11 @@ export const {
   clearSelectedCharacter,
 } = charactersSlice.actions;
 
-export const selectPaginatedCharacters = (state: RootState) => {
-  const { currentPage, itemsPerPage, filtered } = state.characters;
-  const start = (currentPage - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return filtered.slice(start, end);
-};
+// export const selectPaginatedCharacters = (state: RootState) => {
+//   const { currentPage, itemsPerPage, filtered } = state.characters;
+//   const start = (currentPage - 1) * itemsPerPage;
+//   const end = start + itemsPerPage;
+//   return filtered.slice(start, end);
+// };
 
 export default charactersSlice.reducer;

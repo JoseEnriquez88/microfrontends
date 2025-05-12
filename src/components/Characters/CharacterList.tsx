@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectPaginatedCharacters } from "../../store/features/charactersSlice";
+import { selectPaginatedCharacters } from "../../store/selectors/characterSelectors";
 import type { RootState } from "../../store/store";
 import Tarjeta from "./Tarjeta";
 import NoResults from "./NoResults";
