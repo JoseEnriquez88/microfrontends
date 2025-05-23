@@ -57,7 +57,7 @@ const Loader = () => {
   }, []);
 
   return (
-    <div className="flex h-screen w-full bg-black border border-black justify-center items-center">
+    <div className="flex h-screen w-full bg-black border border-black justify-center items-center overflow-hidden">
       <div className="w-[500px]">
         <svg
           id="loading-container"
